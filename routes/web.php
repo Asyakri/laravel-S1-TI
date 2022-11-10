@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,7 @@ Route::get('/about', [App\Http\Controllers\AboutController::class,'index'])->nam
 
 // Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class,'index']);
 Route::get('/', [App\Http\Controllers\MahasiswaController::class,'index'])->name('mahasiswa');
+Route::get('/mahasiswa/{id}/edit', [App\Http\Controllers\MahasiswaController::class,'edit'])->name('mahasiswa.edit');
+
+Route::delete('/mahasiswa/{id}', [MahasiswaController::class,'destroy'])->name('mahasiswa.delete');
+
