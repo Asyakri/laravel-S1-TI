@@ -14,10 +14,10 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $data=MahasiswaModel::get();
-        $no=0;
+        $data = MahasiswaModel::get();
+        $no = 0;
         // dd($data);
-        return view('mahasiswa',compact('data','no'));
+        return view('mahasiswa', compact('data', 'no'));
     }
 
     /**
@@ -60,7 +60,9 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = MahasiswaModel::findOrFail($id);
+        // dd($data);
+        return view('editMahasiswa', compact('data'));
     }
 
     /**
@@ -72,7 +74,18 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mahasiswa = MahasiswaModel::findOrFail($id);
+        // dd($mahasiswa = $request->all());
+
+        $mahasiswa->nama = $request->nama;
+        $mahasiswa->jurusan = $request->jurusan;
+        $mahasiswa->prodi = $request->prodi;
+        $mahasiswa->save();
+
+        if ($mahasiswa) {
+            // jika mahasiswa berhasil di update
+            return redirect()->route('mahasiswa');
+        }
     }
 
     /**

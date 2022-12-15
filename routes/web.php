@@ -20,11 +20,11 @@ use Illuminate\Support\Facades\Route;
 //  php artisan make:controller namacontroller (-r) Opsional
 
 // Route about (hyperlink), [(controller yang di tuju),(function yang dituju)]
-Route::get('/about', [App\Http\Controllers\AboutController::class,'index'])->name('about');
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
 
 // Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class,'index']);
-Route::get('/', [App\Http\Controllers\MahasiswaController::class,'index'])->name('mahasiswa');
-Route::get('/mahasiswa/{id}/edit', [App\Http\Controllers\MahasiswaController::class,'edit'])->name('mahasiswa.edit');
+Route::get('/', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
+Route::get('/mahasiswa/{id}/edit', [MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
+Route::put('/mahasiswa/{id}/update', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
 
-Route::delete('/mahasiswa/{id}', [MahasiswaController::class,'destroy'])->name('mahasiswa.delete');
-
+Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy'])->name('mahasiswa.delete');
